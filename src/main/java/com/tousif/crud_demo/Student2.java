@@ -1,4 +1,4 @@
-package com.tousif.hql_sql_demo;
+package com.tousif.crud_demo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Student {
+public class Student2 {
 	@Id
 //	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="student_rollno")

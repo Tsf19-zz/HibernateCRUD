@@ -1,4 +1,4 @@
-package com.tousif.hql_sql_demo;
+package com.tousif.crud_demo;
 
 import java.util.List;
 import java.util.Random;

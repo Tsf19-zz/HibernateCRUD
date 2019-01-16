@@ -1,4 +1,4 @@
-package com.tousif.hql_sql_demo;
+package com.tousif.crud_demo;
 
 import java.util.List;
 import java.util.Map;
@@ -17,8 +17,22 @@ public class SQLDemo {
 
 	public static void main( String[] args ) {
 
-		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class);
-		ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
+//		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class);
+//		ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
+//		SessionFactory sf = config.buildSessionFactory(reg);
+//		Session session = sf.openSession();
+		
+		//LONG WAY....
+		
+		Configuration config = new Configuration();
+		config.configure("hibernate.cfg.xml");
+		config.addAnnotatedClass(Student.class);
+		
+		ServiceRegistryBuilder srb = new ServiceRegistryBuilder();
+		
+		ServiceRegistry reg = srb.applySettings(config.getProperties()).buildServiceRegistry();
+		
+		
 		SessionFactory sf = config.buildSessionFactory(reg);
 		Session session = sf.openSession();
 
@@ -54,11 +68,11 @@ public class SQLDemo {
 //		 }
 
 
+		
 //		2.PRINTING SPECIFIC COLUMN
 		
 //		Suppose we want to print just name and marks, 
 		SQLQuery query = session.createSQLQuery("select student_name, student_marks from Student where student_marks>60");
-		
 		
 //		When fetching name and marks, we have to specify that we are getting two things, and fetch it by means of key value pair
 //		<student_name, name> & <student_marks, marks>
@@ -70,7 +84,9 @@ public class SQLDemo {
 			 Map m = (Map)o;
 			 System.out.println(m.get("student_name") + " " + m.get("student_marks"));
 		 }
+		
 
+		
 
 
 
